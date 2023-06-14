@@ -20,6 +20,9 @@ class ChatGPTClient {
 
   /// Temperature, default to 0.5
   double temperature;
+  
+  /// Max Tokens, default to 1.500
+  final int maxTokens;
 
   List<Message> _historyList = List.empty(growable: true);
 
@@ -28,7 +31,8 @@ class ChatGPTClient {
       {required this.apiKey,
       this.model = "gpt-3.5-turbo",
       this.systemPrompt = "You are a helpful assistant",
-      this.temperature = 0.5});
+      this.temperature = 0.5,
+      this.maxTokens = 1500});
 
   Map<String, String> _getHeaders() {
     return {
@@ -41,6 +45,7 @@ class ChatGPTClient {
     final body = {
       "model": model,
       "temperature": temperature,
+      "max_tokens": maxTokens,
       "messages": _generateMessages(text).map((e) => e.toMap()).toList(),
       "stream": stream
     };
