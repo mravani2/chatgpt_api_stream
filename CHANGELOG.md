@@ -1,3 +1,7 @@
+## 1.1.2
+
+* Added the possibility to set max_tokens
+
 ## 1.1.1
 
 * Fix Stream issue in Safari browser, for now it will wait for chunks to be completed. This will be fixed when `dart:http` fix the streamed response issue in Web
